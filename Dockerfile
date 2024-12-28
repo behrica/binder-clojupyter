@@ -16,12 +16,13 @@ RUN adduser --disabled-password \
 
 RUN apt-get update && apt-get install -y openjdk-17-jdk git curl
 RUN curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh && chmod +x linux-install.sh && ./linux-install.sh
+RUN clojure -Sthreads 1 -Sdeps '{:deps {org.scicloj/noj {:mvn/version "2-beta3"}}}' -P
 
 WORKDIR ${HOME}
 USER ${USER}
 RUN git clone https://github.com/clojupyter/clojupyter
 RUN cd clojupyter && clojure -T:build uber 
 RUN cd clojupyter &&  clojure -M -m clojupyter.cmdline install
-RUN clojure -Sthreads 1 -Sdeps '{:deps {org.scicloj/noj {:mvn/version "2-beta3"}}}' -P
+
 RUN rm -rf clojupyter
 COPY noj.ipynb .
