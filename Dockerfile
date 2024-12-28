@@ -23,3 +23,5 @@ RUN git clone https://github.com/clojupyter/clojupyter
 RUN cd clojupyter && clojure -T:build uber 
 RUN cd clojupyter &&  clojure -M -m clojupyter.cmdline install
 RUN clojure -Sthreads 1 -Sdeps '{:deps {org.scicloj/noj {:mvn/version "2-beta3"}}}' -P
+RUN rm -rf clojupyter
+COPY noj.ipynb .
