@@ -21,4 +21,4 @@ WORKDIR ${HOME}
 USER ${USER}
 RUN git clone https://github.com/clojupyter/clojupyter
 RUN cd clojupyter && clojure -T:build uber 
-RUN cd clojupyter  clojure -M -m clojupyter.cmdline install
+RUN cd clojupyter &&  clojure -M -m clojupyter.cmdline install
