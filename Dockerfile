@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y openjdk-17-jdk curl
 WORKDIR ${HOME}
 USER ${USER}
 
-RUN curl  -L -o clojupyter.jar https://github.com/clojupyter/clojupyter/releases/download/v0.4.332/clojupyter-0.4.332-standalone.jar 
+RUN curl  -L -o clojupyter.jar https://github.com/behrica/noj/releases/download/noj-2-beta4-clojupyter/noj-2-beta4-clojupyter.jar
 RUN java -cp clojupyter.jar clojupyter.cmdline install -j clojupyter.jar  -i clojupyter
 RUN rm clojupyter.jar
 COPY noj.ipynb .
