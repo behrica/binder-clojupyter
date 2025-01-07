@@ -16,10 +16,11 @@ RUN adduser --disabled-password \
 
 RUN apt-get update && apt-get install -y openjdk-17-jdk curl
 
+ADD https://github.com/behrica/noj/releases/download/noj-2-beta4-clojupyter/noj-2-beta4-clojupyter.jar /tmp/clojupyter.jar
+RUN chown ${USER} /tmp/clojupyter.jar
 WORKDIR ${HOME}
 USER ${USER}
 
-ADD https://github.com/behrica/noj/releases/download/noj-2-beta4-clojupyter/noj-2-beta4-clojupyter.jar clojupyter.jar
-RUN java -cp clojupyter.jar clojupyter.cmdline install -j clojupyter.jar  -i clojupyter
-RUN rm clojupyter.jar
+RUN ls -la /tmp/clojupyter.jar
+RUN java -cp /tmp/clojupyter.jar clojupyter.cmdline install -j /tmp/clojupyter.jar  -i clojupyter-noj
 COPY noj.ipynb .
