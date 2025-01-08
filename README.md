@@ -5,4 +5,6 @@
 Launches jupyter in Browser via Binder including  [clojupyter](https://github.com/clojupyter/clojupyter) which allow writing Clojure
 in Jupyter notebooks.
 
+This is based on a patched clojupyter: https://github.com/clojupyter/clojupyter/pull/187
+
 Contains all data science libraries of [Noj](https://github.com/scicloj/noj) and renders rich visualisatins via [kinds](https://scicloj.github.io/kindly-noted/kindly) automatically.
